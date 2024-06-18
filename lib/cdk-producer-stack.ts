@@ -16,22 +16,21 @@ export class producerStack extends cdk.Stack {   // VPC stack
       maxAzs: 2,
       natGateways: 0,
       enableDnsSupport: false
-
     });
 
-    const parameter = new ssm.StringParameter(this, 'vpcIdParameter', {
-      parameterName: props.vpcIdExportPath,
-      stringValue: this.vpc.vpcId,
-    });
+    // const parameter = new ssm.StringParameter(this, 'vpcIdParameter', {
+    //   parameterName: props.vpcIdExportPath,
+    //   stringValue: this.vpc.vpcId,
+    // });
 
     // Resolving dependency deadlocks;
-    const vpc_lookup1 = ec2.Vpc.fromLookup(this, 'otherVPC', {
-      vpcId: 'vpc-05df396a6d6a756cc'
-    });
-    const SecurityGroup2 = new ec2.SecurityGroup(this, 'lookupSG', {
-      vpc: vpc_lookup1,
-      allowAllOutbound: true,
-    });
+    // const vpc_lookup1 = ec2.Vpc.fromLookup(this, 'otherVPC', {
+    //   vpcId: 'vpc-05df396a6d6a756cc'
+    // });
+    // const SecurityGroup2 = new ec2.SecurityGroup(this, 'lookupSG', {
+    //   vpc: vpc_lookup1,
+    //   allowAllOutbound: true,
+    // });
 
     // Resolution1: manually add Export; Resolution2: addDependency;
     // const exportValueOptions: cdk.ExportValueOptions = {
@@ -42,4 +41,3 @@ export class producerStack extends cdk.Stack {   // VPC stack
   }
 }
 
-// https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Stack.html#exportwbrvalueexportedvalue-options

@@ -24,21 +24,9 @@ export class lambdaStack extends cdk.Stack {
       const obj = importedLambda.node.findAll()[child].node.id
       console.log(obj)
     }
+    console.log("=========End============")
   }
 }
 
    
-// Turn the resource's ARN into a proxy object
-// The external resource does not become a part of your AWS CDK app. 
-// Cannot EscapeHatches of proxy object
 
-// Construct a proxy for a bucket by its name (must be same account)
-// s3.Bucket.fromBucketName(this, 'MyBucket', 'my-bucket-name');
-
-// Construct a proxy for a bucket by its full ARN (can be another account)
-// s3.Bucket.fromBucketArn(this, 'MyBucket', 'arn:aws:s3:::my-bucket-name');
-
-// Construct a proxy for an existing VPC from its attribute(s)
-// ec2.Vpc.fromVpcAttributes(this, 'MyVpc', {
-//   vpcId: 'vpc-1234567890abcde',
-// });
